@@ -234,6 +234,7 @@ function get_interface() { // {{{
                             results[interface_name].if_octets_rx = value;
                             if (typeof results[interface_name].if_octets_tx != 'undefined') {
                                 plugin.addCounter('if_octets', '', [results[interface_name].if_octets_rx, results[interface_name].if_octets_tx]);
+                                delete results[interface_name].if_octets_rx;
                                 delete results[interface_name].if_octets_tx;
                             }
                         break;
@@ -242,12 +243,14 @@ function get_interface() { // {{{
                             if (typeof results[interface_name].if_octets_rx != 'undefined') {
                                 plugin.addCounter('if_octets', '', [results[interface_name].if_octets_rx, results[interface_name].if_octets_tx]);
                                 delete results[interface_name].if_octets_rx;
+                                delete results[interface_name].if_octets_tx;
                             }
                         break;
                         case 'Packets Received/sec':
                             results[interface_name].if_packets_rx = Number(value / 100);
                             if (typeof results[interface_name].if_packets_tx != 'undefined') {
                                 plugin.addCounter('if_packets', '', [results[interface_name].if_packets_rx, results[interface_name].if_packets_tx]);
+                                delete results[interface_name].if_packets_rx;
                                 delete results[interface_name].if_packets_tx;
                             }
                         break;
@@ -256,12 +259,14 @@ function get_interface() { // {{{
                             if (typeof results[interface_name].if_packets_rx != 'undefined') {
                                 plugin.addCounter('if_packets', '', [results[interface_name].if_packets_rx, results[interface_name].if_packets_tx]);
                                 delete results[interface_name].if_packets_rx;
+                                delete results[interface_name].if_packets_tx;
                             }
                         break;
                         case 'Packets Received Errors':
                             results[interface_name].if_error_rx = value;
                             if (typeof results[interface_name].if_error_tx != 'undefined') {
                                 plugin.addCounter('if_errors', '', [results[interface_name].if_error_rx, results[interface_name].if_error_tx]);
+                                delete results[interface_name].if_error_rx;
                                 delete results[interface_name].if_error_tx;
                             }
                         break;
@@ -270,6 +275,7 @@ function get_interface() { // {{{
                             if (typeof results[interface_name].if_error_rx != 'undefined') {
                                 plugin.addCounter('if_errors', '', [results[interface_name].if_error_rx, results[interface_name].if_error_tx]);
                                 delete results[interface_name].if_error_rx;
+                                delete results[interface_name].if_error_tx;
                             }
                         break;
                     }
